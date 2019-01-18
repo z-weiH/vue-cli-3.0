@@ -2,7 +2,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   // 配置项目 路径
   publicPath : '/',
-  configureWebpack : {
+  /* configureWebpack : { / 对象模式
     // 忽略 使用cdn加速
     externals: {
       vue: "Vue",
@@ -23,6 +23,26 @@ module.exports = {
         })
       ]
     }
+  }, */
+  configureWebpack : function(config) {
+    // 忽略 使用cdn加速
+    config.externals = {
+      vue: "Vue",
+      vuex: "Vuex",
+      "vue-router": "VueRouter",
+    };
+    // 去除console
+    config.plugins.push(
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            warnings: false,
+            drop_debugger: true,
+            drop_console: true,
+          },
+        }
+      })
+    );
   },
   // 修改打包 模板
   pages: {
