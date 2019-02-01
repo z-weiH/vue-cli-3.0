@@ -5,6 +5,9 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+// 引入全局组件
+import '@/components/index.js'
+
 new Vue({
   router,
   store,
