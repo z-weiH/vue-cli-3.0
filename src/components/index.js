@@ -10,6 +10,5 @@ componentsContext.keys().forEach(component => {
   * 兼容 import export 和 require module.export 两种规范
   */
   const ctrl = componentConfig.default || componentConfig;
-  const name = ctrl.__file.replace(/src\/components\/global\/(.*?)\.vue/,'$1');
-  Vue.component(ctrl.name || name, ctrl);
+  Vue.component(ctrl.name, ctrl);
 })
