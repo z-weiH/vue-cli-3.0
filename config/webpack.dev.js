@@ -1,9 +1,17 @@
 module.exports = {
+  // 修改打包 模板
   pages: {
-    index: {
+    app: {
       entry: 'src/main.js',
+      // 模板来源
       template: 'public/index.html',
+      // 在 dist/index.html 的输出
+      filename: 'index.html',
     },
+  },
+  chainWebpack : config => {
+    // 注意 -app表示 针对具体页面
+    config.plugins.delete('prefetch-app');
   },
   devServer : {
     // 端口
