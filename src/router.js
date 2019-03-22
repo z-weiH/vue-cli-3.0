@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 let pageView = (name,chunk) => {
-  let aaa = name;
   return () => import(/*webpackChunkName:  "[request]"*/ `@/views/${name}.vue`)
 }
 
